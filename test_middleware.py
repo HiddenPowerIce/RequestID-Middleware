@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from fastapi.exceptions import HTTPException
 
-from request_id_middleware import RequestIDMiddleware
+from request_id_middleware import RequestIDMiddleware, get_request_id
 
 
 app = FastAPI()
@@ -18,6 +18,7 @@ async def get_items():
 
 @app.get("/users")
 async def get_users():
+    print(get_request_id())
     return [{"username": "alex"}, {"username": "bob", "age": 21}, {"username": "alice"}]
 
 
