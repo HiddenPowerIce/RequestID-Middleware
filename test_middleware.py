@@ -18,10 +18,14 @@ async def get_items():
 
 @app.get("/users")
 async def get_users():
-    print(get_request_id())
     return [{"username": "alex"}, {"username": "bob", "age": 21}, {"username": "alice"}]
 
 
 @app.get("/raise")
 async def raise_error():
     raise HTTPException(status_code=418, detail="something bad happened...")
+
+
+@app.get("/id")
+async def get_id():
+    return {"request id": get_request_id()}
